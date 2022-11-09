@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="RelacionesEjer_3">
+  <ClassDiagramComponents>
+    <Class name="Baraja" package="Entidades" visibility="public" xPosition="69.0" yPosition="273.0">
+      <Fields>
+        <Field name="numero" type="int" visibility="private"/>
+        <Field name="baraja" type="Set&lt;Carta&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="numero"/>
+          <Argument type="Set&lt;Carta&gt;" name="baraja"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNumero" returnType="int" visibility="public"/>
+        <Method name="setNumero" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="getBaraja" returnType="Set&lt;Carta&gt;" visibility="public"/>
+        <Method name="setBaraja" returnType="void" visibility="public">
+          <Argument type="Set&lt;Carta&gt;" name="baraja"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Carta" package="Entidades" visibility="public" xPosition="557.0" yPosition="20.0">
+      <Fields>
+        <Field name="numero" type="Integer" visibility="private"/>
+        <Field name="pinta" type="Pinta" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Integer" name="numero"/>
+          <Argument type="Pinta" name="pinta"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNumero" returnType="Integer" visibility="public"/>
+        <Method name="setNumero" returnType="void" visibility="public">
+          <Argument type="Integer" name="numero"/>
+        </Method>
+        <Method name="getPinta" returnType="Pinta" visibility="public"/>
+        <Method name="setPinta" returnType="void" visibility="public">
+          <Argument type="Pinta" name="pinta"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RelacionesEjer_3" package="RelacionesEjer_3" visibility="public" xPosition="887.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BarajaService" package="Servicios" visibility="public" xPosition="1052.0" yPosition="227.0">
+      <Fields>
+        <Field name="baraja" type="Baraja" visibility="private"/>
+        <Field name="mazo" type="ArrayList&lt;Carta&gt;" visibility="private"/>
+        <Field name="porPinta" type="Comparator&lt;Carta&gt;" visibility="public" isStatic="true"/>
+        <Field name="porNumero" type="Comparator&lt;Carta&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="muestraBaraja" returnType="void" visibility="public"/>
+        <Method name="barajar" returnType="void" visibility="public"/>
+        <Method name="siguieteCarta" returnType="Carta" visibility="public"/>
+        <Method name="darCartas" returnType="void" visibility="public">
+          <Argument type="int" name="cantidad"/>
+        </Method>
+        <Method name="ordenBaraja" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="Pinta" package="Emun" visibility="public" xPosition="45.0" yPosition="20.0">
+      <Literals>
+        <Literal name="ESPADA"/>
+        <Literal name="BASTO"/>
+        <Literal name="ORO"/>
+        <Literal name="COPA"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="Entidades.Carta" target="Emun.Pinta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="porNumero" source="Servicios.BarajaService" target="Entidades.Carta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pinta" source="Entidades.Carta" target="Emun.Pinta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="baraja" source="Servicios.BarajaService" target="Entidades.Baraja" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Servicios.BarajaService" target="Entidades.Carta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="porPinta" source="Servicios.BarajaService" target="Entidades.Carta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mazo" source="Servicios.BarajaService" target="Entidades.Carta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Carta&gt;"/>
+    <UseRelation source="Entidades.Baraja" target="Entidades.Carta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="baraja" source="Entidades.Baraja" target="Entidades.Carta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;Carta&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

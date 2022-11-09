@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="RelacionesEjer_1">
+  <ClassDiagramComponents>
+    <Class name="Perro" package="Entidades" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+        <Field name="raza" type="String" visibility="private"/>
+        <Field name="tam" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="String" name="raza"/>
+          <Argument type="int" name="tam"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getEdad" returnType="int" visibility="public"/>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="int" name="edad"/>
+        </Method>
+        <Method name="getRaza" returnType="String" visibility="public"/>
+        <Method name="setRaza" returnType="void" visibility="public">
+          <Argument type="String" name="raza"/>
+        </Method>
+        <Method name="getTam" returnType="int" visibility="public"/>
+        <Method name="setTam" returnType="void" visibility="public">
+          <Argument type="int" name="tam"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="Entidades" visibility="public" xPosition="394.0" yPosition="188.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+        <Field name="dni" type="int" visibility="private"/>
+        <Field name="perros" type="List&lt;Perro&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="int" name="dni"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="getEdad" returnType="int" visibility="public"/>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="int" name="edad"/>
+        </Method>
+        <Method name="getDni" returnType="int" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="int" name="dni"/>
+        </Method>
+        <Method name="getPerros" returnType="List&lt;Perro&gt;" visibility="public"/>
+        <Method name="setPerros" returnType="void" visibility="public">
+          <Argument type="List&lt;Perro&gt;" name="perros"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RelacionesEjer_1" package="RelacionesEjer_1" visibility="public" xPosition="502.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PerroService" package="Servicios" visibility="public" xPosition="872.0" yPosition="13.0">
+      <Fields>
+        <Field name="leer" type="Scanner" visibility="private"/>
+        <Field name="lista_perros" type="List&lt;Perro&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="crearPerro" returnType="Perro" visibility="public"/>
+        <Method name="mostrarPerros" returnType="void" visibility="public"/>
+        <Method name="obtenerListaPerros" returnType="List&lt;Perro&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PersonaService" package="Servicios" visibility="public" xPosition="1258.0" yPosition="210.0">
+      <Fields>
+        <Field name="leer" type="Scanner" visibility="private"/>
+        <Field name="lista_Personas" type="List&lt;Persona&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="crearPersona" returnType="Persona" visibility="public"/>
+        <Method name="mostrarPersonas" returnType="void" visibility="public"/>
+        <Method name="mostrarPersonaPorNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombrePersona"/>
+        </Method>
+        <Method name="adoptarPerro" returnType="void" visibility="public">
+          <Argument type="List&lt;Perro&gt;" name="listaObtenida"/>
+          <Argument type="String" name="nombrePerro"/>
+          <Argument type="String" name="nombrePersona"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="perros" source="Entidades.Persona" target="Entidades.Perro" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Perro&gt;"/>
+    <UseRelation source="Servicios.PerroService" target="Entidades.Perro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Servicios.PersonaService" target="Entidades.Persona" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Entidades.Persona" target="Entidades.Perro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Servicios.PersonaService" target="Entidades.Perro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lista_Personas" source="Servicios.PersonaService" target="Entidades.Persona" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Persona&gt;"/>
+    <HasRelation name="lista_perros" source="Servicios.PerroService" target="Entidades.Perro" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Perro&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
